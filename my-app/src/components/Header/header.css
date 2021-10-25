@@ -1,0 +1,15 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+}
+.header__title{
+    font-size: 20px;
+    text-transform: uppercase;
+    color: rgb(5, 97, 97);
+    line-height: 20px;
+}
+.header__search{
+    height: 20px;
+}
