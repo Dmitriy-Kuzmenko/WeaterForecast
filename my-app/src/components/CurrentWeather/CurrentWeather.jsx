@@ -1,34 +1,66 @@
 import React from "react";
 
-import './CurrentWeather.css'
+import "./CurrentWeather.css";
+import { kelvToCels } from "../../assets/tempTransform";
 
-export default function CurrentWeather() {
+export default function CurrentWeather({ weaterInfo }) {
+
+  const differentTime=(t1,t2)=>{
+    const diff = Math.abs(new Date(t1)-new Date(t2))
+    const hours = Math.floor(diff/1000/60/60)
+    const minutes=Math.round(diff/1000/60%60);
+    return `${hours}:${minutes} hr`
+  }
   return (
     <div className="currentWeather">
       <div className="currentWeather__header block-title">
         <span className="currentWeather__header__title">Current Weather</span>
         <span className="currentWeather__header__date">
-          {new Date(1485762037).toLocaleDateString("en-GB").replace(/\//g, ".")}
+          {new Date().toLocaleDateString("en-GB").replace(/\//g, ".")}
         </span>
       </div>
       <div className="currentWeather__main">
-          <div className="currentWeather__main__imgBox">
-          <img src="http://openweathermap.org/img/wn/11d@2x.png" alt="" />
-        <span className="currentWeather__main__imgBox__text">Sunny</span>
-          </div>
-          <div className="currentWeather__main__degrees">
-              <span className="currentWeather__main__degrees__main">29°C</span>
-              <span className="currentWeather__main__degrees__sub">Real Feel 30°C</span>
-          </div>
-          <div className="currentWeather__main__dayInfo">
-              <p className="currentWeather__main__dayInfo__text">Sunrice: </p>
-              <p className="currentWeather__main__dayInfo__text">Sunset:</p>
-              <p className="currentWeather__main__dayInfo__text">Duration:</p>
-          </div>
+        <div className="currentWeather__main__imgBox">
+          <img
+            src={`http://openweathermap.org/img/wn/${weaterInfo.weather[0].icon}@2x.png`}
+            alt=""
+          />
+          <span className="currentWeather__main__imgBox__text">
+            {weaterInfo.weather[0].main}
+          </span>
+        </div>
+        <div className="currentWeather__main__degrees">
+          <span className="currentWeather__main__degrees__main">
+            {Math.round(kelvToCels(weaterInfo.main.temp))}°C
+          </span>
+          <span className="currentWeather__main__degrees__sub">
+            Real Feel {Math.round(kelvToCels(weaterInfo.main.feels_like))}°C
+          </span>
+        </div>
+        <div className="currentWeather__main__dayInfo">
+          <p className="currentWeather__main__dayInfo__text">
+            Sunrice:{" "}
+            {new Date(weaterInfo.sys.sunrise * 1000)
+              .toLocaleTimeString([], {
+                hour: "2-digit",
+                minute: "2-digit",
+                hour12: true,
+              })
+              .toUpperCase()}
+          </p>
+          <p className="currentWeather__main__dayInfo__text">
+            Sunset:{" "}
+            {new Date(weaterInfo.sys.sunset * 1000)
+              .toLocaleTimeString([], {
+                hour: "2-digit",
+                minute: "2-digit",
+                hour12: true,
+              })
+              .toUpperCase()}
+          </p>
+          <p className="currentWeather__main__dayInfo__text">Duration: {differentTime(weaterInfo.sys.sunrise*1000,weaterInfo.sys.sunset*1000)}</p>
+        </div>
       </div>
-
-      
-
     </div>
   );
 }

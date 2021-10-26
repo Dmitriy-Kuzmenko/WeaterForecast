@@ -10,6 +10,29 @@
     color: rgb(5, 97, 97);
     line-height: 20px;
 }
+
 .header__search{
-    height: 20px;
+    display: flex;
+    align-items: center;
+    background: #fff;
+
+    border: 1px solid grey;
+    height: 30px;
+}
+.header__search__input{
+    padding: 0;
+    height: 100%;
+    border: none;
+}
+
+.header__search__btn{
+    padding: 0;
+    height: 25px;
+    border: none;
+    background: #fff;
+
+}
+
+.header__search__btn img{
+    height: 100%;
 }

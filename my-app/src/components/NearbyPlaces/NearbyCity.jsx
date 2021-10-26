@@ -1,17 +1,19 @@
 import React from 'react';
 
-const NearbyCity = () => {
+import { kelvToCels } from "../../assets/tempTransform";
+
+const NearbyCity = (props) => {
     return (
         <div className="nearbyPlaces__main__city">
         <span className="nearbyPlaces__main__city__name">
-            London
+            {props.cityInfo.name}
         </span>
         <div className="nearbyPlaces__main__city__imgBox">
-        <img className="nearbyPlaces__main__city__img" src="http://openweathermap.org/img/wn/11d@2x.png" alt="" />
+        <img className="nearbyPlaces__main__city__img" src={`http://openweathermap.org/img/wn/${props.cityInfo.weather[0].icon}@2x.png`} alt="" />
 
         </div>
         <span className="nearbyPlaces__main__city__temp">
-        29°C
+        {Math.round(kelvToCels(props.cityInfo.main.temp))}°C
         </span>
     </div>
     );
