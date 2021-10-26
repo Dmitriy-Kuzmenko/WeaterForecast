@@ -5,7 +5,7 @@ import './CurrentWeather.css'
 export default function CurrentWeather() {
   return (
     <div className="currentWeather">
-      <div className="currentWeather__header">
+      <div className="currentWeather__header block-title">
         <span className="currentWeather__header__title">Current Weather</span>
         <span className="currentWeather__header__date">
           {new Date(1485762037).toLocaleDateString("en-GB").replace(/\//g, ".")}

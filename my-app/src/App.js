@@ -1,6 +1,6 @@
 import "./App.css";
 
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 import Header from "./components/Header/Header";
 import WeatherInfo from "./components/WeatherInfo/WeatherInfo";
 

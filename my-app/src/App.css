@@ -5,3 +5,11 @@ body{
   font-weight: bold;
   background: rgb(237, 235, 235);
 }
+
+.block-title{
+  display: flex;
+    color: rgb(22, 194, 194);
+    justify-content: space-between;
+    text-transform: uppercase;
+    align-items: center;
+}

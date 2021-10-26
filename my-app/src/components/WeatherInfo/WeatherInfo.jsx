@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import NearbyPlaces from "../NearbyPlaces/NearbyPlaces";
+import FiveDaysForecast from "../FiveDaysForecast/FiveDaysForecast";
+import PageNotFound from "../PageNotFound/PageNotFound";
 import TodayWeather from "../TodayWeather/TodayWeather";
 import "./WeatherInfo.css";
 
@@ -24,8 +25,10 @@ export default function WeatherInfo() {
           5-day forecast
         </button>
       </div>
-      <TodayWeather></TodayWeather>
-      <NearbyPlaces/>
+      {
+        selectedPage?<TodayWeather/>:<FiveDaysForecast/>
+      }
+      {/* <PageNotFound/> */}
     </>
   );
 }

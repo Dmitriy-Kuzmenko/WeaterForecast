@@ -4,13 +4,6 @@
     padding: 30px;
 }
 
-.currentWeather__header{
-    display: flex;
-    color: rgb(22, 194, 194);
-    justify-content: space-between;
-    text-transform: uppercase;
-    align-items: center;
-}
 
 .currentWeather__main{
     display: flex;
