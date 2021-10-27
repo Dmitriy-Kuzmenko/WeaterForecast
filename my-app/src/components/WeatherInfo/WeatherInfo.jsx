@@ -5,10 +5,10 @@ import PageNotFound from "../PageNotFound/PageNotFound";
 import TodayWeather from "../TodayWeather/TodayWeather";
 import "./WeatherInfo.css";
 
-export default function WeatherInfo(weaterInfo) {
+export default function WeatherInfo(props) {
 
   const [selectedPage, setSelectedPage] = useState(true);
-  if (!weaterInfo.weaterInfo) {
+  if (!props.weaterInfo) {
    return ( <PageNotFound/>)
   }
   return (
@@ -28,7 +28,7 @@ export default function WeatherInfo(weaterInfo) {
         </button>
       </div>
       {
-        selectedPage?<TodayWeather weaterInfo={weaterInfo.weaterInfo}/>:<FiveDaysForecast/>
+        selectedPage?<TodayWeather weaterInfo={props.weaterInfo}/>:<FiveDaysForecast/>
       }
      
     </>

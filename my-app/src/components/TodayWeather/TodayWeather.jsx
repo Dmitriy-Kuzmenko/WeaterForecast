@@ -5,12 +5,13 @@ import NearbyPlaces from "../NearbyPlaces/NearbyPlaces";
 
 import "./TodayWeather.css";
 
-export default function TodayWeather(weaterInfo) {
+export default function TodayWeather(props) {
+
   return (
     <div>
-      <CurrentWeather weaterInfo={weaterInfo.weaterInfo}/>
-      <HourlyForecast />
-      <NearbyPlaces location={weaterInfo.weaterInfo.coord}/>
+      <CurrentWeather weaterInfo={props.weaterInfo}/>
+      <HourlyForecast location={props.weaterInfo.coord}/>
+      <NearbyPlaces location={props.weaterInfo.coord}/>
     </div>
   );
 }
