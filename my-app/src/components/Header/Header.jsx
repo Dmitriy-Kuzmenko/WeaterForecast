@@ -5,7 +5,7 @@ import "./header.css";
 
 export default function Header({handleSearch}) {
 
-    const [cityName, setCityName] = useState("london");
+    const [cityName, setCityName] = useState("");
   return (
     <div className="header">
       <h2 className="header__title">My Weather</h2>

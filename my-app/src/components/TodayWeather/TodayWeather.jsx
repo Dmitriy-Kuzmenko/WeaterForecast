@@ -9,9 +9,9 @@ export default function TodayWeather(props) {
 
   return (
     <div>
-      <CurrentWeather weaterInfo={props.weaterInfo}/>
-      <HourlyForecast location={props.weaterInfo.coord}/>
-      <NearbyPlaces location={props.weaterInfo.coord}/>
+      <CurrentWeather weatherInfo={props.weatherInfo}/>
+      <HourlyForecast location={props.weatherInfo.coord}/>
+      <NearbyPlaces location={props.weatherInfo.coord}/>
     </div>
   );
 }

@@ -1,21 +1,17 @@
 import React from "react";
-import { useEffect, useState } from "react";
-import "./HourlyForecast.css";
-import HourlyForecastItem from "./HourlyForecastItem";
+import "../HourlyForecast/HourlyForecast.css";
+import HourlyForecastItem from "../HourlyForecast/HourlyForecastItem";
 
-export default function HourlyForecast(props) {
-  const [hourlyForecast, setHourlyForecast] = useState([]);
-
-  useEffect(() => {
-    fetch(
-      `http://api.openweathermap.org/data/2.5/onecall?lat=${props.location.lat}&lon=${props.location.lon}&exclude=daily,minutely&appid=9708505d6a2b16e9f7bd5444e6515310`
-    )
-      .then((res) => res.json())
-      .then((data) =>
-        setHourlyForecast(data.hourly.filter((forecast, ind) => ind < 6))
-      );
-  }, [props.location]);
-
+export default function FiveDaysHourlyForecast(props) {
+  if (props.hourlyForecast.length < 5) {
+    return (
+      <div className="hourlyForecast">
+        <div className="hourlyForecast__header block-title">
+          <span className="hourlyForecast__header__title">no information available, oops</span>
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="hourlyForecast">
       <div className="hourlyForecast__header block-title">
@@ -23,7 +19,11 @@ export default function HourlyForecast(props) {
       </div>
       <div className="hourlyForecast__main">
         <div className="hourlyForecast__main__items">
-          <div className="hourlyForecast__main__items__title">Today</div>
+          <div className="hourlyForecast__main__items__title">
+            {new Date(props.currentDay * 1000).toLocaleDateString(undefined, {
+              weekday: "long",
+            })}
+          </div>
           <div className="hourlyForecast__main__items__forecast">
             <p>Forecast</p>
           </div>
@@ -37,7 +37,7 @@ export default function HourlyForecast(props) {
             <p>Wind (km/h)</p>
           </div>
         </div>
-        {hourlyForecast.map((item) => (
+        {props.hourlyForecast.map((item) => (
           <HourlyForecastItem hourInfo={item} key={item.dt} />
         ))}
       </div>

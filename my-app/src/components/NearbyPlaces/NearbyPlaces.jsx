@@ -25,7 +25,7 @@ export default function NearbyPlaces(props) {
       </div>
       <div className="nearbyPlaces__main">
           {cities.map((item,ind)=>{
-            if(ind===0)return
+            if(ind===0)return ""
             return <NearbyCity cityInfo={item} key={item.id}/>
           })}
       </div>

@@ -3,7 +3,7 @@ import React from "react";
 import "./CurrentWeather.css";
 import { kelvToCels } from "../../assets/tempTransform";
 
-export default function CurrentWeather({ weaterInfo }) {
+export default function CurrentWeather({ weatherInfo }) {
 
   const differentTime=(t1,t2)=>{
     const diff = Math.abs(new Date(t1)-new Date(t2))
@@ -22,25 +22,25 @@ export default function CurrentWeather({ weaterInfo }) {
       <div className="currentWeather__main">
         <div className="currentWeather__main__imgBox">
           <img
-            src={`http://openweathermap.org/img/wn/${weaterInfo.weather[0].icon}@2x.png`}
-            alt=""
+            src={`http://openweathermap.org/img/wn/${weatherInfo.weather[0].icon}@2x.png`}
+            alt="weather_info"
           />
           <span className="currentWeather__main__imgBox__text">
-            {weaterInfo.weather[0].main}
+            {weatherInfo.weather[0].main}
           </span>
         </div>
         <div className="currentWeather__main__degrees">
           <span className="currentWeather__main__degrees__main">
-            {Math.round(kelvToCels(weaterInfo.main.temp))}°C
+            {Math.round(kelvToCels(weatherInfo.main.temp))}°C
           </span>
           <span className="currentWeather__main__degrees__sub">
-            Real Feel {Math.round(kelvToCels(weaterInfo.main.feels_like))}°C
+            Real Feel {Math.round(kelvToCels(weatherInfo.main.feels_like))}°C
           </span>
         </div>
         <div className="currentWeather__main__dayInfo">
           <p className="currentWeather__main__dayInfo__text">
             Sunrice:{" "}
-            {new Date(weaterInfo.sys.sunrise * 1000)
+            {new Date(weatherInfo.sys.sunrise * 1000)
               .toLocaleTimeString([], {
                 hour: "2-digit",
                 minute: "2-digit",
@@ -50,7 +50,7 @@ export default function CurrentWeather({ weaterInfo }) {
           </p>
           <p className="currentWeather__main__dayInfo__text">
             Sunset:{" "}
-            {new Date(weaterInfo.sys.sunset * 1000)
+            {new Date(weatherInfo.sys.sunset * 1000)
               .toLocaleTimeString([], {
                 hour: "2-digit",
                 minute: "2-digit",
@@ -58,7 +58,7 @@ export default function CurrentWeather({ weaterInfo }) {
               })
               .toUpperCase()}
           </p>
-          <p className="currentWeather__main__dayInfo__text">Duration: {differentTime(weaterInfo.sys.sunrise*1000,weaterInfo.sys.sunset*1000)}</p>
+          <p className="currentWeather__main__dayInfo__text">Duration: {differentTime(weatherInfo.sys.sunrise*1000,weatherInfo.sys.sunset*1000)}</p>
         </div>
       </div>
     </div>

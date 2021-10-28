@@ -18,6 +18,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: left;
+}
+
+.fivedays-forecast__main__item:hover{
+    background:rgb(213, 225, 223);
 }
 .fivedays-forecast__main__item.active{
     background:#fff;
@@ -30,6 +35,7 @@
 }
 
 .fivedays-forecast__main__item__date{
+    text-transform: uppercase;
     font-weight: normal;
     color: grey;
 }

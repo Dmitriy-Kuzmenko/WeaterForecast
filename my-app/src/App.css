@@ -13,3 +13,11 @@ body{
     text-transform: uppercase;
     align-items: center;
 }
+
+.loader{
+  display:flex;
+  justify-content:center;
+}
+.loader img{
+  margin-left:40px;
+}
